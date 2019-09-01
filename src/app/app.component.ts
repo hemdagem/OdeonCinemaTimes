@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { Film } from './Film';
 
 @Component({
   selector: 'app-root',
@@ -9,23 +10,16 @@ import { HttpClient } from '@angular/common/http';
 export class AppComponent {
   title = 'my-dream-app';
   films: Film[];
+  cinema : 'BFI IMAX';
   constructor(private http: HttpClient) {
-    this.getFilmTimes();
+    this.getFilmTimes(211, "BFI IMAX");
   }
 
-  getFilmTimes() {
-    this.http.get("https://www.odeon.co.uk/api/uk/v2/cinemas/cinema/211/filmswithdetails.json")
+  getFilmTimes(cinemaId, cinemaName) {
+    this.http.get(`https://www.odeon.co.uk/api/uk/v2/cinemas/cinema/${cinemaId}/filmswithdetails.json`)
       .subscribe((data: Film[]) => this.films = data );
+
+      this.cinema = cinemaName
   }
 }
 
-export interface Film {
-  title: string;
-  releaseDate: Date;
-  showdates: string;
-  media : media;
-}
-
-export interface media {
-  imageUrl400 :string
-}

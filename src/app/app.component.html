@@ -1,6 +1,23 @@
 <div class="container">
   <div class="row">
-    <h1>BFI IMAX Cinema</h1>
+
+    <h1 class="col-sm">{{cinema}}</h1>
+
+    <div class="dropdown float-right">
+      <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown"
+        aria-haspopup="true" aria-expanded="false">
+        Choose Cinema
+      </button>
+      <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+        <a class="dropdown-item" href="#" (click)="getFilmTimes(211, 'BFI Imax')">BFI Imax</a>
+        <a class="dropdown-item" href="#" (click)="getFilmTimes(105, 'ODEON Luxe Leicester Square')">ODEON Luxe
+          Leicester Square</a>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+
+
   </div>
   <div class="row">
     <div *ngFor="let film of films" class="col-xs-12 col-sm-4 col-md-3">
