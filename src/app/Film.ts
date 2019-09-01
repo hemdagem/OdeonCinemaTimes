@@ -4,4 +4,5 @@ export interface Film {
   releaseDate: Date;
   showdates: string;
   media: media;
+  masterId : number;
 }

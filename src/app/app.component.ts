@@ -10,12 +10,12 @@ import { Film } from './Film';
 export class AppComponent {
   title = 'my-dream-app';
   films: Film[];
-  cinema : 'BFI IMAX';
+  cinema : string;
   constructor(private http: HttpClient) {
     this.getFilmTimes(211, "BFI IMAX");
   }
 
-  getFilmTimes(cinemaId, cinemaName) {
+  getFilmTimes(cinemaId: number, cinemaName: string) {
     this.http.get(`https://www.odeon.co.uk/api/uk/v2/cinemas/cinema/${cinemaId}/filmswithdetails.json`)
       .subscribe((data: Film[]) => this.films = data );
 
